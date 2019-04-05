@@ -1,0 +1,122 @@
+---
+---
+
+@import  'material/material.css';
+
+body {
+  padding-top: 50px;
+}
+
+/****** navbar *******/
+
+.navbar {
+  padding: 0;
+  background: #fff;
+}
+
+.navbar-brand {
+  img {
+    height: 35px;
+  }
+}
+
+/****** homepage *****/
+
+#above_fold {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  h1 {
+    line-height: 150%;
+    font-size: 35px;
+  }
+
+  h3 {
+    color: #555;
+  }
+
+  select.form-control-lg {
+    display: inline-block;
+    margin: 0 10px;
+    width: auto;
+    font-weight: bold;
+    color: blue;
+    font-size: 24px;
+  }
+}
+
+.above_fold_text_container {
+  p {
+    /*font-size: 18px;*/
+    line-height: 180%;
+    color: #333;
+    strong {
+      background: lightyellow;
+      font-size: 18px;
+    }
+  }
+}
+
+.browser_bar {
+  height: 30px;
+}
+
+#terminal_container {
+  padding: 0;
+  overflow: hidden;
+}
+
+.terminal {
+  border-radius: 0 0 0px 4px;
+  background: #000;
+  color: #fff;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.mailchimp_container {
+  background: #333;
+  .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .btn {
+    height: 33px;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+}
+
+/*** FAQ ***/
+
+#faq {
+  i {
+    color: orange;
+    font-size: 34px;
+    vertical-align: middle;
+  }
+}
+
+#faq_list {
+  line-height: 180%;
+}
+
+/**** forms ****/
+
+.form-control, .custom-select, .form-control-file {
+  background-color: #fff;
+  border-radius: 3px;
+  border-width: 1px;
+  padding: 5px 10px;
+  border-color: #e0e0e0;
+  font-size: inherit;
+}
+
+/*** footer ***/
+
+#footer {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: gray;
+}
