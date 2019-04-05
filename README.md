@@ -1,4 +1,4 @@
-# PetalData.app website
+# [PetalData.app website](https://petaldata.app)
 
 ## Local Development
 
