@@ -1,0 +1,110 @@
+---
+layout: default
+---
+
+<div class="container">
+
+  <div class="row" id="above_fold">
+    <div class="col">
+      <h1>Love writing data export scripts? We didn't think so 😩.</h1>
+      <h3>Export 
+        <select class="form-control form-control-lg">
+         <option value="Intercom">Intercom</option>
+         <option value="Salesforce">Salesforce</option>
+         <option value="Stripe">Stripe</option>
+         <option value="Google Analytics">Google Analytics</option>
+         <option value="Gmail">Gmail</option>
+         <option value="Google Ads">Google Ads</option>
+         <option value="Facebook Ads">Facebook Ads</option>
+         <option value="Hubspot">Hubspot</option>
+         <option value="Zendesk">Zendesk</option>
+        </select>
+        to a 
+        <select class="form-control form-control-lg">
+          <option value="pandas">Pandas Dataframe</option>
+          <option value="pandas">CSV</option>
+          <option value="pandas">Google Sheet</option>
+          <option value="pandas">Excel Workbook</option>
+        </select>
+        with our universal API
+        .
+      </h3>
+    </div>
+  </div> <!-- row -->
+
+  <div class="row">
+    <div class="col above_fold_text_container">
+      <p>
+        <strong>It's easy to spend more time building a data pipeline than on analysis.</strong> For <em>every</em> cloud service you use, you must: learn a new API, iterate over results, convert columns into proper datatypes, write scripts to fetch new data, stay under rate limits, handle API changes, schema changes, and more. That's a shame! These services have a rich set of data that isn't in your app database.
+      </p>
+      <p>
+        <strong>PetalData gives you a universal API for accessing your cloud data.</strong> Spend your time exploring, generating insights, and building ML models using data from your cloud services ... not on data plumbing.
+      </p>
+    </div>
+    <div class="col" id="terminal_container">
+        <img src="/images/browser_bar.png" class="browser_bar" />
+<pre class="terminal">
+# Export Intercom companies to a Pandas Dataframe
+>>> import petaldata
+>>> data = petaldata.Intercom().load_companies()
+Loaded 10,287 companies created between 2016-01-01 and 2019-03-01.
+>>> df = data.to_frame()
+</pre>
+    </div> <!-- col -->
+  </div> <!-- row -->
+</div> <!-- container -->
+ 
+{% include mailchimp.html %}
+
+<div class="container">
+
+    <div class="row">
+    <div class="col">
+      <h2 id="faq">Frequently Asked Questions <i class="material-icons">
+help_outline
+</i></h2>
+    </div></div>
+
+  <div class="row" id="faq_list">
+    <div class="col">
+
+      <h4>Who is this for?</h4>
+      <p>
+        Running a full ETL and data warehouse suite is expensive and time-consuming to maintain. If you aren't ready to make this investment, PetalData is your secret sauce. Data scientists and data hobbyists can quickly explore the data in the cloud services you already use without the hassle of figuring out how to access the data.
+      </p>
+
+      <h4>What is the API?</h4>
+      <p>
+        PetalData is designed to resemble the Python Scikit-Learn datasets module. This gives you a single programatic interface to many data sources.
+      </p>
+
+      <h4>How does it work?</h4>
+      <p>
+        When you make a call like
+        <code>petaldata.Stripe().load_customers()</code> from our Python package, a request is sent to our PetalData servers. We do the hard, brittle exporting work on our servers. Once the data is exported, we send it down to you in your requested format (ex: Pandas Dataframe) with proper types. 
+      </p>
+    </div>
+    <div class="col">
+
+      <h4>What about security?</h4>
+      <p>
+        We're just as paranoid about leaking data as you are. All network traffic to and from PetalData is via HTTPS. For some large exports, we need to temporarily store data at rest. When we do, this data is encrypted. PetalData does not store credentials for your cloud services.
+      <p>
+
+      <h4>Why not distribute the entire thing as a Python package and forgoe the server?</h4>
+      <p>
+        Data exporting is a brittle process that requires continual debugging, tweaks, and maintenance. If we didn't have our servers perform the hard work, debugging issues and frequent release cycles would be painful for everyone. We also plans to support other ways to access data outside of Python and it's a lot easier to build out this logic once.
+      </p>
+
+      <h4>How much does it cost?</h4>
+      <p>
+        Pricing hasn't been finalized, but our intent is to make PetalData affordable for small teams.
+      </p>
+
+
+    </div>
+  </div>
+</div>
+
+{% include mailchimp.html %}
+
