@@ -6,7 +6,7 @@ author: "Derek Haynes"
 
 ![intercom data science](/images/blog/intercom/intercom_ds.png)
 
-As the beating heart of many SaaS businesses, [Intercom](https://intercom.com) contains a treasure of user behavior. From user geographic locations to number of logins to monthly spend, a data scientist can perform trajectory-changing gymnastics using the data within Intercom. For example, you can calculate:
+As the beating heart of many SaaS businesses, [Intercom](https://intercom.com) contains a treasure of user behavior. From user geographic locations to the number of logins to monthly spend, a data scientist can perform trajectory-changing gymnastics using the data within Intercom. For example, you can calculate:
 
 * Signups over time
 * Lead-to-user conversion rate
@@ -81,7 +81,7 @@ The above output indicates the Dataframe has 1,000 rows and 33 columns.
 
 ## Set the Dataframe index
 
-By default, the Dataframe creates a new index that simply increments with the row number. Instead, lets use the `user_id` as the index. Create a new cell with the following code:
+By default, the Dataframe creates a new index that simply increments with the row number. Instead, let's use the `user_id` as the index. Create a new cell with the following code:
 
 <script src="https://gist.github.com/itsderek23/39f7a363f9cc2f4be885d1f09404c54d.js"></script>
 
