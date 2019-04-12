@@ -7,7 +7,12 @@
 
 .navbar {
   padding: 0;
-  background: #fff;
+  a:link {
+    background: none; /* tufte */
+    img {
+      width: initial;
+    }
+  }
 }
 
 .navbar-brand {
@@ -138,4 +143,27 @@
   margin-top: 20px;
   margin-bottom: 30px;
   color: gray;
+}
+
+/*** posts ***/
+
+/* tufte overrides */
+
+.col {
+  article {
+    padding-top: 0;
+  }
+
+  section > ol, section > ul {
+    width: 55%; /* same as p so sidenotes line up */
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    width: auto !important;
+  }
+  .col section > ol, .col section > ul {
+    width: 95%;
+  }
 }

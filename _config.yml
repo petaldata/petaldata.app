@@ -4,6 +4,8 @@ email:
 author:
 description:
 url:
+kramdown:  
+  parse_block_html: true
 
 # Build settings
 permalink: :title/

@@ -1,11 +1,23 @@
 <div id="footer" class="container">
   <div class="row">
+    {% if page.layout == "default" %}
+      <div class="col">
+          <div><strong>From the Blog</strong></div>
+          {% for post in site.posts %}
+            <p>
+              <a href="{{ post.url }}">{{ post.title }}</a>
+            </p>
+          {% endfor %}
+      </div>
+    {% endif %}
     <div class="col">
-      © 2019 PetalData Inc. All rights reserved.
+      <div style="{% if page.layout == "default" %} float:right {% endif %}">
+        © 2019 PetalData Inc. All rights reserved.<br/>
+        <a href="mailto:query@petaldata.app">query@petaldata.app</a>
+      </div>
     </div>
-    <div class="col"><a href="mailto:query@petaldata.app" style="float:right">query@petaldata.app</a></div>
-  </div>
-</div>
+  </div> <!-- row -->
+</div> <!-- container -->
 
 
 <!-- JS -->
