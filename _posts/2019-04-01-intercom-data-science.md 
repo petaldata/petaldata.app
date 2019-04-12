@@ -4,18 +4,20 @@ title:  "Exporting Intercom data for some quick data science"
 author: "Derek Haynes"
 ---
 
-As the beating heart of many SaaS businesses, [Intercom](https://intercom.com) contains a treasure of user behavior. From user geographic locations to number of logins to monthly spend, a data scientist can provide trajectory-changing analysis using the data within Intercom. For example, you can calculate:
+![intercom data science](/images/blog/intercom/intercom_ds.png)
+
+As the beating heart of many SaaS businesses, [Intercom](https://intercom.com) contains a treasure of user behavior. From user geographic locations to number of logins to monthly spend, a data scientist can perform trajectory-changing gymnastics using the data within Intercom. For example, you can calculate:
 
 * Signups over time
 * Lead-to-user conversion rate
 * Churn by signup cohort
 * Monthly spend by segment
 
-...and that's just the start! In this post, I'll provide a gentle introduction for exporting Intercom data to a [Pandas](https://pandas.pydata.org/) Dataframe for analysis. No data science degree required.
+...and that's just the start! In this post, I'll provide a gentle introduction for exporting Intercom data to a [Pandas](https://pandas.pydata.org/) Dataframe for analysis.
 
 ## Tools
 
-If you're a data hobbyist, you're probably used Google sheets. Google Sheets is great for basic analysis on smaller datasets, but it falls down when analyzing many thousands of rows and columns. Instead, we're going to use a lean data science stack that will handle your Intercom data without breaking a sweat:
+If you're a data hobbyist, you know Google sheets. Google Sheets is great for basic analysis on smaller datasets, but it falls down when analyzing thousands of rows and columns. Instead, we're going to use a lean data science stack that will handle your Intercom data without breaking a sweat:
 
 * [Google Colab](https://colab.research.google.com) - a free, shared, remote notebook to run our data analysis. This means there's no local environments to setup.<label for="sn-demo"
        class="margin-toggle sidenote-number">
@@ -61,7 +63,7 @@ This installs the `python-intercom` package, initializes an Intercom client, and
 
 ## Add users to a list
 
-Next we'll iterate over the users in your account and `append` them to a list (called `users_list`). Create a new code cell with the following content:
+Next we'll iterate over the users in your account and append them to the `users_list`. Create a new code cell with the following content:
 
 <script src="https://gist.github.com/itsderek23/b3529597ea9d87b8018127a73df1f0ae.js"></script>
 
@@ -91,7 +93,7 @@ There are a number of timestamp columns (ex: `created_at`) that are provided as 
 
 ## Left to the reader
 
-The code above is enough to get started, but it is far from production-ready. I've left the following to you:
+Before inspecting the Dataframe, let's cover what _is not_ in our exporting logic. Our code above is enough to get started, but it _is not production-ready_. I've left the following to you:
 
 * Scrolling - A `BadRequestError` is thrown if your app has over 10,000 users. Intercom's [scroll API](https://developers.intercom.com/intercom-api-reference/reference#iterating-over-all-users) needs to be used instead. `python-intercom` has support for this, but usage is not documented.
 * Error Handling - It's very common to run into Network timeouts and other errors when iterating over data sets. There is no error handling for this.
@@ -138,14 +140,20 @@ Which generates a chart like:
 
 ![signups chart](/images/blog/intercom/signups_chart.png)
 
-You could see how active your users via a histogram. Just type `df_users.session_count.hist()`:
+How active are your users? A histogram of of user session counts would help! Just type `df_users.session_count.hist()`:
 
 ![hist](/images/blog/intercom/session_hist.png)
 
-You could take a look at those power users by querying for users with over 50 sesssions. Just type `df_users[df_users.session_count > 50].email`.
+How about getting a list of your power users? Query for users in the 80th percentile of number of sessions: 
+
+```
+df_users[df_users.session_count >= df_users.session_count.quantile(0.80)].email
+```
 
 This is just scratching the surface of the types of insights you can obtain by loading your Intercom data into a Pandas Dataframe. 
 
 ## Wrapping up
 
-A [2016 Data Science Report](https://visit.figure-eight.com/rs/416-ZBE-142/images/CrowdFlower_DataScienceReport_2016.pdf) showed that 60% of a data scientist's time is spent on cleaning and organizing data. Just 9% is spent on mining data for patterns. This is unfortonate - what we're all excited about is extracting insights from data sets like Intercom, not in data preprocessing. Spend more of your time generating insights by trying [PetalData](https://petaldata.app).
+A [2016 Data Science Report](https://visit.figure-eight.com/rs/416-ZBE-142/images/CrowdFlower_DataScienceReport_2016.pdf) showed that 60% of a data scientist's time is spent on cleaning and organizing data. Just 9% is spent on mining data for patterns. This is sad - we want to extract insights from data sets like Intercom, not spend our time in data preprocessing. 
+
+Spend more of your time generating insights by trying [PetalData](https://petaldata.app).
