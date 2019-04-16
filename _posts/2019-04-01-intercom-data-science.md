@@ -97,6 +97,7 @@ Before inspecting the Dataframe, let's cover what _is not_ in our exporting logi
 
 * Scrolling - A `BadRequestError` is thrown if your app has over 10,000 users. Intercom's [scroll API](https://developers.intercom.com/intercom-api-reference/reference#iterating-over-all-users) needs to be used instead. `python-intercom` has support for this, but usage is not documented.
 * Error Handling - It's very common to run into Network timeouts and other errors when iterating over data sets. There is no error handling for this.
+* Limiting Memory Usage - This script builds a large list of users in memory. This could consume a lot of memory if your app has many thousands of users.
 * Rate Limits - There's no special handling to stay under [Intercom's rate limits](https://developers.intercom.com/intercom-api-reference/reference#rate-limiting).
 * The following attributes are objects or lists and are not parsed:
   * Custom Attributes
