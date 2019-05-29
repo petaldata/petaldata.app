@@ -1,0 +1,40 @@
+{% include datasets/method_header.html data_source=include.data_source method="Delete" %}
+
+<div class="container" style="padding:0">
+<div class="row">
+<div class="col">
+<p>
+  Deletes the associated <a href="#save">saved</a> Pickle file and the dataframe accessible at <code>{{include.data_source}}.df</code>.
+  This <em>does not</em> delete data within your {{page.toc_title}} account.
+</p>
+
+<h4>Arguments</h4>
+
+No arguments.
+
+</div>
+<div class="col code_samples">
+<ul class="nav nav-tabs " id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#python" role="tab" aria-controls="home" aria-selected="true">Python</a>
+  </li>
+  
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="python" role="tabpanel" aria-labelledby="home-tab">
+{% highlight python %}
+import petaldata
+
+petaldata.datasets.{{page.toc_title | downcase}}.api_key = "[YOUR {{page.toc_title | upcase}} API KEY]"
+
+{{include.data_source | downcase}} = petaldata.datasets.{{page.toc_title | downcase}}.{{include.data_source}}()
+{{include.data_source | downcase}}.delete()
+{% endhighlight %}
+  </div>
+ 
+</div>
+</div> <!-- col -->
+</div>
+</div>
+
+<hr/>

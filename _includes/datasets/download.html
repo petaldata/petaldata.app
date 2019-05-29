@@ -1,0 +1,103 @@
+{% include datasets/method_header.html data_source=include.data_source method="Download" %}
+
+<div class="" >
+<div class="row">
+<div class="col">
+<p>
+Downloads {{include.data_source}} from {{page.toc_title}}. {{ include.data_source }} are accessible as a Pandas Dataframe via the <code>{{ include.data_source }}.df</code> attribute after the download completes.
+</p>
+
+<p>
+<code>{{ include.data_source }}.df</code> is overwritten with the new downloaded data. The dataframe is not saved automatically following the download - call <a href="#save"><code>{{ include.data_source }}.save()</code></a> to save the dataset.
+</p>
+
+<p>
+In-progress downloads are saved as <code>csv</code> files to <a href="/api_libraries#local_storage">local storage</a>.
+</p>
+
+<h4>Arguments</h4>
+
+
+<table class="table table-sm params">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+created_gt<br/>
+<code>optional</code> <code>datetime</code>
+</td>
+<td>
+Return {{ include.data_source | downcase }} created after this value.
+</td>
+</tr>
+<tr>
+<td>
+created_gte<br/>
+<code>optional</code> <code>datetime</code>
+</td>
+<td>
+Return {{ include.data_source | downcase }} created on or after this value.
+
+</td>
+</tr>
+<tr>
+<td>
+updated_gte<br/>
+<code>optional</code> <code>datetime</code>
+</td>
+<td>
+Return {{ include.data_source | downcase }} updated on or after this avlue.
+</td>
+</tr>
+<tr>
+<td>
+limit<br/>
+<code>optional</code> <code>integer</code>
+</td>
+<td>
+Limits the number of {{ include.data_source | downcase }} returned.
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<div class="col code_samples">
+<ul class="nav nav-tabs " id="myTab" role="tablist">
+<li class="nav-item">
+<a class="nav-link active" id="home-tab" data-toggle="tab" href="#python-{{ include.data_source | downcase }}-download" role="tab" aria-controls="home" aria-selected="true">Python</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="profile-tab" data-toggle="tab" href="#curl-{{ include.data_source | downcase }}-download" role="tab" aria-controls="profile" aria-selected="false">cURL</a>
+</li>
+</ul>
+<div class="tab-content" id="myTabContent">
+<div class="tab-pane fade show active" id="python-{{ include.data_source | downcase }}-download" role="tabpanel" aria-labelledby="home-tab">
+{% highlight python %}
+import petaldata
+
+petaldata.datasets.{{ page.toc_title | downcase }}.api_key = "[YOUR {{ page.toc_title | upcase }} API KEY]"
+
+{{ include.data_source | downcase }} = petaldata.datasets.{{ page.toc_title | downcase }}.{{ include.data_source }}()
+{{ include.data_source | downcase }}.download(limit=5)
+# Access downloaded {{ include.data_source | downcase }} via a Pandas Dataframe
+df = {{ include.data_source | downcase }}.df
+{% endhighlight %}
+</div>
+<div class="tab-pane fade" id="curl-{{ include.data_source | downcase }}-download" role="tabpanel" aria-labelledby="profile-tab">
+{% highlight shell %}
+curl http://localhost:3001/{{ page.toc_title }}/{{ include.data_source | downcase }}.csv?limit=5 \
+-H "{{include.http_api_header}}: [YOUR {{ page.toc_title | upcase }} API KEY]" \
+{% endhighlight %}
+</div>
+</div>
+</div> <!-- col -->
+</div>
+</div>
+
+<hr/>

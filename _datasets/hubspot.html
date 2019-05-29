@@ -1,0 +1,41 @@
+---
+layout: dataset_show
+title: Hubspot Dataset
+toc_title: Hubspot
+logo_file: datasets/hubspot.png
+description: Download your Hubspot data into Pandas Dataframes. Quickly make insights from your CRM data.
+---
+
+{% include jumbotron.html %}
+
+<div>
+<div class="row">
+<div class="col">
+  {% include datasets/authentication.html %} 
+
+  <p>Your Hubspot API key must be passed to PetalData. <a href="https://knowledge.hubspot.com/articles/kcs_article/integrations/how-do-i-get-my-hubspot-api-key">See Hubspot's API key docs</a> for instructions on creating an API key.</p>
+</div>
+<div class="col code_samples">
+  {% include_relative hubspot/auth_examples.html %}
+</div> <!-- col -->
+</div> <!-- row -->
+</div> <!-- container -->
+<hr />
+
+<h2 id="contacts">Contacts</h2>
+
+<p>
+Contacts are the fundamental building block to HubSpot - they store lead-specific data that makes it possible to leverage much of the functionality in HubSpot, from marketing automation, to lead scoring to smart content.
+</p>
+
+<hr/>
+
+{% include datasets/init.html data_source="Contacts" %}
+{% include datasets/download.html data_source="Contacts" http_api_header = "HUBSPOT_API_KEY" %}
+{% include datasets/save.html data_source="Contacts" %}
+{% include datasets/upsert.html data_source="Contacts" %}
+{% include datasets/delete.html data_source="Contacts" %}
+
+
+
+

@@ -250,6 +250,7 @@ DEPENDENCIES
   github-pages
   grb
   jekyll
+  rouge
 
 RUBY VERSION
    ruby 2.5.1p57

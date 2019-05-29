@@ -1,0 +1,68 @@
+<div class="container" style="padding:0">
+  <div class="row">
+    <div class="col">
+      <p>
+        Updates existing invoices in <code>Invoices.df</code> and inserts new invoices into the dataframe.
+      </p>
+
+      <p>
+         <code>Invoices.df</code> is overwritten with the updated data. The dataframe is not saved automatically following the upsert - call <a href="#save"><code>Invoices.save()</code></a> to save the dataset.
+      </p>
+
+      <h4>Arguments</h4>
+
+
+      <table class="table table-sm params">
+        <thead>
+          <tr>
+          <th>Name</th>
+          <th>Description</th>
+          </tr>
+          </thead>
+        <tbody>
+          <tr>
+          <td>
+          created_gt<br/>
+          <code>optional</code> <code>datetime</code>
+          </td>
+          <td>
+        Return invoices created after this value.
+          </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="col code_samples">
+      <ul class="nav nav-tabs " id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#python_upsert" role="tab" aria-controls="home" aria-selected="true">Python</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#curl_upsert" role="tab" aria-controls="profile" aria-selected="false">cURL</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="python_upsert" role="tabpanel" aria-labelledby="home-tab">
+{% highlight python %}
+import petaldata
+from datetime import datetime, timedelta
+
+petaldata.datasets.stripe.api_key = "[YOUR STRIPE API KEY]"
+
+invoices = petaldata.datasets.stripe.Invoice()
+invoices.upsert(created_gt=datetime.now() - timedelta(days=30))
+# Access invoices via a Pandas Dataframe
+df = invoices.df
+{% endhighlight %}
+        </div>
+        <div class="tab-pane fade" id="curl_upsert" role="tabpanel" aria-labelledby="profile-tab">
+{% highlight shell %}
+curl http://localhost:3001/stripe/invoices.csv?created_gt=1558635197 \
+  -H "STRIPE-API-KEY: [YOUR STRIPE API KEY]" \
+{% endhighlight %}
+        </div>
+      </div>
+    </div> <!-- col -->
+  </div>
+</div>

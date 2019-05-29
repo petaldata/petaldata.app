@@ -1,0 +1,41 @@
+<div class="sidebar-sticky">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">
+    <img src="/images/petaldata_logo_with_text.png" alt="Petaldata">
+  </a>
+
+  <ul class="nav flex-column">
+    {% assign sorted = (site.html_pages | sort: 'order') %}
+    {% for p in sorted %}
+        <li class="nav-item">
+          <a class="nav-link {% if p.url == page.url %}active{% endif %}" href="{{ p.url }}">
+            {% if p.toc_title %}
+              {{ p.toc_title }}
+            {% else %}
+              {{ p.title }}
+            {% endif %}
+          </a>
+          {% if p.url == page.url %}
+            <div id="toc"></div>
+          {% endif %}
+        </li>
+    {% endfor %}
+  </ul>
+
+  <h6 class="sidebar-heading muted">Datasets</h6>
+  <ul class="nav flex-column">
+    {% for p in site.datasets %}
+    <li class="nav-item {% if p.url == page.url %}active{% endif %}">
+      <a class="nav-link" href="{{ p.url }}">
+        {% if p.toc_title %}
+          {{ p.toc_title }}
+        {% else %}
+          {{ p.title }}
+        {% endif %}
+      </a>
+      {% if p.url == page.url %}
+      <div id="toc"></div>
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+</div>

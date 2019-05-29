@@ -1,0 +1,58 @@
+<div class="container" style="padding:0">
+  <div class="row">
+    <div class="col">
+      <p>
+        Initializes a Stripe Invoices dataset, loading the dataset if it was previously <a href="#save">saved</a> to <a href="/api_libraries#storage">storage</a>.
+      </p>
+
+      <p>
+        See <a href="#">this example</a> for a full download, update, and save lifecycle implementation in Python.</p>
+
+                    <h4>Arguments</h4>
+
+      <table class="table table-sm params">
+        <thead>
+          <tr>
+          <th>Name</th>
+          <th>Description</th>
+          </tr>
+          </thead>
+        <tbody>
+          <tr>
+          <td>
+          base_pickle_filename<br/>
+          <code>optional string</code>
+          </td>
+          <td>
+         Specifies the name of the Pickle file the Dataset should be loaded from and saved to. If the file doesn't exit, it will be created when
+      the Dataset is saved. <p>The default is <code>stripe_invoices.pkl</code>.</p>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="col code_samples">
+      <ul class="nav nav-tabs " id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#python" role="tab" aria-controls="home" aria-selected="true">Python</a>
+        </li>
+        
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="python" role="tabpanel" aria-labelledby="home-tab">
+{% highlight python %}
+import petaldata
+
+petaldata.datasets.stripe.api_key = "[YOUR STRIPE API KEY]"
+
+invoices = petaldata.datasets.stripe.Invoice()
+# Access previously saved invoices via a Pandas Dataframe
+df = invoices.df
+{% endhighlight %}
+        </div>
+       
+      </div>
+    </div> <!-- col -->
+  </div>
+</div>

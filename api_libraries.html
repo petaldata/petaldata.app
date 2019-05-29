@@ -1,0 +1,63 @@
+---
+layout: dataset_show
+title: PetalData Python Library
+toc_title: Python Library
+description: Easily download data from your cloud apps into analysis-ready Pandas Dataframes.
+order: 3
+---
+<h1 id="api_libraries">{{ page.title }}</h1>
+<p class="lead">The PetalData Python library makes it easy to interact with your cloud app datasets.</p> 
+<p class="lead">The <code>petaldata</code> package downloads CSV files and schema information from the PetalData server and generates Pandas Dataframes with the proper datatypes. Additionally, the library includes <a href="#storage">storage</a> functionality for saving datasets locally and to Amazon S3.</p>
+
+
+<h2 id="installation">Installation</h2>
+<p>The package can be installed via <code>pip</code>:</p>
+{% highlight shell %}
+pip install petaldata
+{% endhighlight %}
+<p>You can also find the PetalData package on <a href="https://pypi.org/project/petaldata/">PyPI</a>.</p>
+<hr />
+<h2 id="storage">Storage</h2>
+<p>
+  The Python library can save your dataset to your local computer, Amazon S3, or both. Local Storage is the default storage location.
+</p>
+<p>
+  When a dataset is downloaded it is initally written to a <code>csv</code> file in local storage. When calling <code>save()</code> on a Dataset, the dataset is saved in a Pickle file that lets us preserve each column's datatype.
+</p>
+<hr />
+<h3 id="local_storage">Local Storage</h3>
+<p>By default, PetalData writes all files to <code>os.getcwd() + "/petaldata_cache/"</code>. You can specify a different directory:
+</p>
+{% highlight python %}
+petaldata.storage.Local.dir = "/tmp/petaldata_cache/"
+{% endhighlight %}
+If the directory doesn't exist it will be created.
+<h4>Disabling Local Storage</h4>
+<p>Local storage is always used to download <code>csv</code> files but can be disabled for storing Pickle files:
+</p>
+{% highlight python %}
+petaldata.storage.Local.enabled = False
+{% endhighlight %}
+<hr />
+<h3 id="s3_storage">S3 Storage</h3>
+<p>Saving your datasets to Amazon S3 is a good option for:</p>
+<ul>
+  <li>Remote scripts - rather than download an entire dataset when running a remote script, load the previous version, <code>upsert()</code> the dataset, and save again. This can dramitally speed up the execution time of the script.</li>
+  <li>Teamwide access - write a script that regularly updates and saves a dataset to S3, then give teams access to that dataset. They won't need to download their own full copy.
+  </li>
+</ul>
+
+<h4>S3 Configuration</h4>
+
+<p>
+  S3 storage must be explicity enabled:
+</p>
+{% highlight python %}
+petaldata.storage.S3.enabled = True
+
+petaldata.storage.S3.aws_access_key_id = "[AWS_ACCESS_KEY_ID]"
+petaldata.storage.S3.aws_secret_access_key = "[AWS_SECRET_ACCESS_KEY]"
+petaldata.storage.S3.bucket_name = "[AWS_BUCKET]"
+{% endhighlight %}
+
+<p>Once enabled, S3 acts just like local storage.</p>

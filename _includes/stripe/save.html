@@ -1,0 +1,37 @@
+<div class="container" style="padding:0">
+  <div class="row">
+    <div class="col">
+      <p>
+        Saves a <a href="#download">downloaded</a> or <a href="#upsert">upsert-ed</a> invoices dataset to <a href="/api_libraries#storage">storage</a> as a Pickle file. <code>Invoice.save()</code> overwrites the existing Pickle file if it exists.
+      </p>
+
+      <h4>Arguments</h4>
+
+      No arguments.
+
+    </div>
+    <div class="col code_samples">
+      <ul class="nav nav-tabs " id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#python" role="tab" aria-controls="home" aria-selected="true">Python</a>
+        </li>
+        
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="python" role="tabpanel" aria-labelledby="home-tab">
+{% highlight python %}
+import petaldata
+
+petaldata.datasets.stripe.api_key = "[YOUR STRIPE API KEY]"
+
+invoices = petaldata.datasets.stripe.Invoice()
+invoices.download(limit=5)
+# Saves invoices to a pickle file.
+invoices.save()
+{% endhighlight %}
+        </div>
+       
+      </div>
+    </div> <!-- col -->
+  </div>
+</div>

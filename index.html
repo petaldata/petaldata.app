@@ -1,111 +1,100 @@
 ---
-layout: default
-title: "Easily export data from your cloud services ~ PetalData"
+layout: dataset_show
+title: PetalData
+toc_title: Introduction
+description: Easily download data from cloud apps into analysis-ready Pandas Dataframes.
+logo_file: petaldata_logo.png
+order: 1
 ---
 
+
+
+<div class="jumbotron jumbotron-fluid" id="data_set_jumbotron">
+  <div class="container">
+    <table>
+      <tr>
+        <td><img src="/images/petaldata_logo.png" class="logo" /></td>
+        <td><h1 class="display-4">PetalData</h1></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><p class="lead js-toc-ignore" style="max-width:500px"><strong>{{ page.description }}</strong></p></td>
+      </tr>
+    </table>
+    
+  </div>
+</div>
 <div class="container">
-
-  <div class="row" id="above_fold">
-    <div class="col">
-      <h1>Love writing scripts to export data? We didn't think so 😩.</h1>
-      <h3>Export 
-        <select class="form-control form-control-lg">
-         <option value="Intercom">Intercom</option>
-         <option value="Salesforce">Salesforce</option>
-         <option value="Stripe">Stripe</option>
-         <option value="Google Analytics">Google Analytics</option>
-         <option value="Gmail">Gmail</option>
-         <option value="Google Ads">Google Ads</option>
-         <option value="Facebook Ads">Facebook Ads</option>
-         <option value="Hubspot">Hubspot</option>
-         <option value="Zendesk">Zendesk</option>
-        </select>
-        to a 
-        <select class="form-control form-control-lg">
-          <option value="pandas">Pandas Dataframe</option>
-          <option value="pandas">CSV</option>
-          <option value="pandas">Google Sheet</option>
-          <option value="pandas">Excel Workbook</option>
-        </select>
-        with our universal API
-        .
-      </h3>
-    </div>
-  </div> <!-- row -->
-
   <div class="row">
-    <div class="col above_fold_text_container">
-      <p>
-        <strong>It's easy to spend more time building a data pipeline than on analysis.</strong> For <em>every</em> cloud service you use, you must: learn a new API, iterate over results, convert columns into proper datatypes, write scripts to fetch new data, stay under rate limits, handle API changes, schema changes, and more. That's a shame! These services have a rich set of data that isn't in your app database.
-      </p>
-      <p>
-        <strong>PetalData gives you a universal API for accessing your cloud data.</strong> Spend your time exploring, generating insights, and building ML models using data from your cloud services ... not on data plumbing.
-      </p>
-    </div>
-    <div class="col" id="terminal_container">
-        <img src="/images/browser_bar.png" class="browser_bar" />
-<pre class="terminal">
-# Export Intercom companies to a Pandas Dataframe
->>> import petaldata
->>> data = petaldata.Intercom().load_companies()
-Loaded 10,287 companies created between 2016-01-01 and 2019-03-01.
->>> df = data.to_frame()
-</pre>
+    <div class="col">
+      <p class="lead">Your cloud apps don't make it easy to download data for analysis. For every app you use, you must learn a new API, paginate over results, convert columns into proper datatypes, write scripts to fetch new data, and more.</p>
+      <p class="lead">PetalData solves this problem by providing a consistent API for downloading analysis-ready data across cloud apps. Start delivering insights in minutes.</p>
+    </div> <!-- col -->
+    <div class="col">
+      <p class="lead"><mark>Try these examples:</mark></p>
+      <div class="code_samples">
+        <ul class="nav nav-tabs " id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#python" role="tab" aria-controls="home" aria-selected="true">
+              <img src="/images/datasets/stripe.jpg" />
+              Stripe
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#hubspot" role="tab" aria-controls="profile" aria-selected="false">
+              <img src="/images/datasets/hubspot.png" />
+              Hubspot</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="python" role="tabpanel" aria-labelledby="home-tab">
+{% highlight python %}
+import petaldata
+petaldata.datasets.stripe.api_key = "[YOUR STRIPE API KEY]"
+
+invoices = petaldata.datasets.stripe.Invoice()
+invoices.download(limit=5)
+# Access downloaded invoices via a Pandas Dataframe
+df = invoices.df
+{% endhighlight %}
+          </div>
+          <div class="tab-pane fade" id="hubspot" role="tabpanel" aria-labelledby="profile-tab">
+{% highlight python %}
+import petaldata
+petaldata.datasets.hubspot.api_key = "[YOUR HUBSPOT API KEY]"
+
+contacts = petaldata.datasets.hubspot.Contacts()
+contacts.download(limit=5)
+# Access downloaded contacts via a Pandas Dataframe
+df = contacts.df
+{% endhighlight %}
+          </div> <!-- tab-pane -->
+        </div> <!-- tab-content -->
+      </div> <!-- code-samples -->
     </div> <!-- col -->
   </div> <!-- row -->
 </div> <!-- container -->
- 
-{% include mailchimp.html %}
-
-<div class="container">
-
-    <div class="row">
-    <div class="col">
-      <h2 id="faq">Frequently Asked Questions <i class="material-icons">
-help_outline
-</i></h2>
-    </div></div>
-
-  <div class="row" id="faq_list">
-    <div class="col">
-
-      <h4>Who is this for?</h4>
-      <p>
-        Running a full ETL and data warehouse suite is expensive and time-consuming to maintain. If you aren't ready to make this investment, PetalData is your secret sauce. Data scientists and data hobbyists can quickly explore the data in the cloud services you already use without the hassle of figuring out how to access the data.
-      </p>
-
-      <h4>What is the API?</h4>
-      <p>
-        PetalData is designed to resemble the Python Scikit-Learn datasets module. This gives you a single programatic interface to many data sources.
-      </p>
-
-      <h4>How does it work?</h4>
-      <p>
-        When you make a call like
-        <code>petaldata.Stripe().load_customers()</code> from our Python package, a request is sent to our PetalData servers. We do the hard, brittle exporting work on our servers. Once the data is exported, we send it down to you in your requested format (ex: Pandas Dataframe) with proper types. 
-      </p>
-    </div>
-    <div class="col">
-
-      <h4>What about security?</h4>
-      <p>
-        We're just as paranoid about leaking data as you are. All network traffic to and from PetalData is via HTTPS. For some large exports, we need to temporarily store data at rest. When we do, this data is encrypted. PetalData does not store credentials for your cloud services.
-      <p>
-
-      <h4>Why not distribute the entire thing as a Python package and forgoe the server?</h4>
-      <p>
-        Data exporting is a brittle process that requires continual debugging, tweaks, and maintenance. If we didn't have our servers perform the hard work, debugging issues and frequent release cycles would be painful for everyone. We also plans to support other ways to access data outside of Python and it's a lot easier to build out this logic once.
-      </p>
-
-      <h4>How much does it cost?</h4>
-      <p>
-        Pricing hasn't been finalized, but our intent is to make PetalData affordable for small teams.
-      </p>
-
-
-    </div>
-  </div>
-</div>
-
-{% include mailchimp.html %}
-
+<hr />
+<h2 class="js-toc-ignore">No ETL pipelines. No data warehouse. </h2>
+<p>
+  Running a full ETL (extract, transform, load) pipeline and data warehouse is expensive and time-consuming to maintain. If you aren't ready to make this investment (and aren't storing terrabytes of data in your cloud apps ... ahem - that's most of us) PetalData is your secret sauce. Data scientists and data hobbyists can quickly explore the data in the cloud apps you already use without assembling several expensive parts.
+</p>
+<hr />
+<h2 id="how_it_works">How PetalData Works</h2>
+<p>There are two components to PetalData: our Python library for downloading datasets and the PetalData server.
+</p>
+<p>
+  While we provide a vanilla HTTP API, you'll primarly interact with PetalData with the petaldata Python package. This library standardizes the process of downloading, saving, and updating datasets. Datasets can be stored locally on your computer or in Amazon S3.
+</p>
+<p>
+  The most brittle parts of the download processes are conducted on our servers, accessible at petaldata.app. The Python library sends requests to the petaldata server. Server-side, we contact the appropriate cloud app, fetch your data, format it, and stream it back to the client. Data exporting is a brittle process that requires continual debugging, tweaks, and maintenance. If we didn't have our servers perform the hard work, debugging issues and frequent release cycles would be painful for everyone.
+</p>
+<hr />
+<h2 id="security">Security</h2>
+<p>
+  We're just as paranoid about leaking data as you are. All network traffic to and from PetalData is via HTTPS. PetalData does not store or log credentials for your cloud services on our servers.
+</p>
+<hr />
+<h2 id="supported_apps">Supported Cloud Apps</h2>
+<p>You can find the cloud apps we currently support in the sidebar under "Datasets". We're adding more and we plan to open-source much of this logic to support as many cloud apps as possible. Watch our GitHub repo to be notified of new datasets. You can request additional datasets by opening an issue on the repo.</p>
+<hr />

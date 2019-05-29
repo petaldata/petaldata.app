@@ -1,0 +1,99 @@
+<div class="" >
+  <div class="row">
+    <div class="col">
+      <p>
+        Downloads Invoices from Stripe. Invoices are accessible as a Pandas Dataframe via the <code>Invoices.df</code> attribute after the download completes.
+      </p>
+
+      <p>
+         <code>Invoices.df</code> is overwritten with the new downloaded data. The dataframe is not saved automatically following the download - call <a href="#save"><code>Invoices.save()</code></a> to save the dataset.
+      </p>
+
+      <p>
+        In-progress downloads are saved as <code>csv</code> files to <a href="/api_libraries#local_storage">local storage</a>.
+      </p>
+
+      <h4>Arguments</h4>
+
+
+      <table class="table table-sm params">
+        <thead>
+          <tr>
+          <th>Name</th>
+          <th>Description</th>
+          </tr>
+          </thead>
+        <tbody>
+          <tr>
+          <td>
+          created_gt<br/>
+          <code>optional</code> <code>datetime</code>
+          </td>
+          <td>
+        Return invoices created after this value.
+          </td>
+          </tr>
+          <tr>
+            <td>
+            created_gte<br/>
+            <code>optional</code> <code>datetime</code>
+            </td>
+            <td>
+            Return invoices created on or after this value.
+
+            </td>
+          </tr>
+          <tr>
+            <td>
+            updated_gte<br/>
+            <code>optional</code> <code>datetime</code>
+            </td>
+            <td>
+            Return invoices updated on or after this avlue.
+            </td>
+          </tr>
+          <tr>
+            <td>
+            limit<br/>
+            <code>optional</code> <code>integer</code>
+            </td>
+            <td>
+            Limits the number of invoices returned.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="col code_samples">
+      <ul class="nav nav-tabs " id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#python" role="tab" aria-controls="home" aria-selected="true">Python</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#curl" role="tab" aria-controls="profile" aria-selected="false">cURL</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="python" role="tabpanel" aria-labelledby="home-tab">
+{% highlight python %}
+import petaldata
+
+petaldata.datasets.stripe.api_key = "[YOUR STRIPE API KEY]"
+
+invoices = petaldata.datasets.stripe.Invoice()
+invoices.download(limit=5)
+# Access downloaded invoices via a Pandas Dataframe
+df = invoices.df
+{% endhighlight %}
+        </div>
+        <div class="tab-pane fade" id="curl" role="tabpanel" aria-labelledby="profile-tab">
+{% highlight shell %}
+curl http://localhost:3001/stripe/invoices.csv?limit=5 \
+  -H "STRIPE-API-KEY: [YOUR STRIPE API KEY]" \
+{% endhighlight %}
+        </div>
+      </div>
+    </div> <!-- col -->
+  </div>
+</div>

@@ -1,0 +1,67 @@
+---
+layout: dataset_show
+title: Stripe Dataset
+toc_title: Stripe
+description: Download your Stripe data into Pandas Dataframes. Analyzing your revenue metrics has never been easier.
+logo_file: datasets/stripe.jpg
+---
+
+{% include jumbotron.html %}
+
+<div>
+<div class="row">
+<div class="col">
+  {% include datasets/authentication.html %} 
+
+  <p>Your Stripe API key must be passed to PetalData. You can view your API keys in the <a href="https://dashboard.stripe.com/apikeys">Developers area</a> of the Stripe dashboard. Read permissions are required for core and billing resources.</p>
+</div>
+<div class="col code_samples">
+  {% include_relative stripe/auth_examples.html %}
+</div> <!-- col -->
+</div> <!-- row -->
+</div> <!-- container -->
+<hr />
+
+<h2 id="examples">Examples</h2>
+
+{% include_relative stripe/examples.html %}
+<hr/>
+
+
+<h2 id="invoices">Invoices</h2>
+<p>
+Invoices are statements of amounts owed by a customer, and are either generated one-off, or generated periodically from a subscription.
+</p>
+<div class="csv_top">
+<div class="row">
+<div class="col">
+<small id="preview_text"></small>
+<i class="material-icons">
+grid_on
+</i>
+<strong>Preview</strong>
+</div>
+<!-- preview not implemented -->
+<div class="col-md-auto" style="display:none">
+<form>
+<div class="form-row">
+<div class="col-auto">
+  <input type="text" class="form-control form-control-sm" id="api_key" style="width: 350px" autocomplete="off" placeholder="Enter a Stripe API key to preview your data">
+  <small id="emailHelp" class="form-text text-muted">Your API key is not stored on our servers.</small>
+</div>
+<div class="col-auto">
+  <button type="submit" class="btn btn-primary btn-sm">Update</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div id="csv_display"></div>
+<hr />
+
+{% include datasets/init.html data_source="Invoices" %}
+{% include datasets/download.html data_source="Invoices" http_api_header = "STRIPE_API_KEY" %}
+{% include datasets/save.html data_source="Invoices" %}
+{% include datasets/upsert.html data_source="Invoices" %}
+{% include datasets/delete.html data_source="Invoices" %}

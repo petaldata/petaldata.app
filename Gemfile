@@ -6,3 +6,4 @@ gem 'foreman'
 gem 'jekyll'
 gem "github-pages", group: :jekyll_plugins
 gem 'grb'
+gem 'rouge'

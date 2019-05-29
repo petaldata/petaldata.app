@@ -1,0 +1,41 @@
+{% include datasets/method_header.html data_source=include.data_source method="Save" %}
+
+<div class="container" style="padding:0">
+<div class="row">
+<div class="col">
+<p>
+Saves a <a href="#download">downloaded</a> or <a href="#upsert">upsert-ed</a> {{include.data_source | downcase}} dataset to <a href="/api_libraries#storage">storage</a> as a Pickle file. <code>{{include.data_source}}.save()</code> overwrites the existing Pickle file if it exists.
+</p>
+
+<h4>Arguments</h4>
+
+No arguments.
+
+</div>
+<div class="col code_samples">
+<ul class="nav nav-tabs " id="myTab" role="tablist">
+<li class="nav-item">
+  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#python-{{include.data_source | downcase}}-save" role="tab" aria-controls="home" aria-selected="true">Python</a>
+</li>
+
+</ul>
+<div class="tab-content" id="myTabContent">
+<div class="tab-pane fade show active" id="python-{{include.data_source | downcase}}-save" role="tabpanel" aria-labelledby="home-tab">
+{% highlight python %}
+import petaldata
+
+petaldata.datasets.{{page.toc_title | downcase}}.api_key = "[YOUR {{page.toc_title | upcase}} API KEY]"
+
+{{include.data_source | downcase}} = petaldata.datasets.{{page.toc_title | downcase}}.{{include.data_source}}()
+{{include.data_source | downcase}}.download(limit=5)
+# Saves {{include.data_source | downcase}} to a pickle file.
+{{include.data_source | downcase}}.save()
+{% endhighlight %}
+</div>
+
+</div>
+</div> <!-- col -->
+</div>
+</div>
+
+<hr/>
