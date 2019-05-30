@@ -360,13 +360,14 @@ main {
   }
 }
 
+.example_logo {
+  max-width: 100px;
+  max-height: 18px;
+  padding-right: 5px;
+}
+
 #examples_table {
   width: auto;
-  .example_logo {
-    max-width: 100px;
-    max-height: 18px;
-    padding-right: 5px;
-  }
   td {
     vertical-align: top;
     

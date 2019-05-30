@@ -2,7 +2,7 @@
 layout: dataset_show
 title: PetalData
 toc_title: Introduction
-description: Easily download data from cloud apps into analysis-ready Pandas Dataframes.
+description: Easily download data from your cloud apps into analysis-ready Pandas Dataframes.
 logo_file: petaldata_logo.png
 order: 1
 ---
@@ -27,11 +27,15 @@ order: 1
 <div class="container">
   <div class="row">
     <div class="col">
-      <p class="lead">Your cloud apps don't make it easy to download data for analysis. For every app you use, you must learn a new API, paginate over results, convert columns into proper datatypes, write scripts to fetch new data, and more.</p>
-      <p class="lead">PetalData solves this problem by providing a consistent API for downloading analysis-ready data across cloud apps. Start delivering insights in minutes.</p>
+      <p class="lead">PetalData is a uniform API for downloading analysis-ready data across your cloud apps. <mark>Do you really want to patch together <em>another</em> script to download and transform your data?</mark> Of course not - start delivering insights in minutes with PetalData.</p>
+
+      <p class="">
+        There's no ETL pipeline to manage, no data warehouse, and no forced demos. We're about fast access to your data for a lot less 💰.
+        Try the examples on the right. You don't even need to signup!
+      </p>
     </div> <!-- col -->
     <div class="col">
-      <p class="lead"><mark>Try these examples:</mark></p>
+      <p class="lead"><mark>Try these examples</mark>👇:</p>
       <div class="code_samples">
         <ul class="nav nav-tabs " id="myTab" role="tablist">
           <li class="nav-item">
@@ -71,23 +75,24 @@ df = contacts.df
           </div> <!-- tab-pane -->
         </div> <!-- tab-content -->
       </div> <!-- code-samples -->
+    <p class="small"><image src="/images/python_logo.png" alt="Python" class="example_logo"/> Install our Python package via <code>pip install petaldata</code>.</p>
     </div> <!-- col -->
   </div> <!-- row -->
 </div> <!-- container -->
 <hr />
 <h2 class="js-toc-ignore">No ETL pipelines. No data warehouse. </h2>
 <p>
-  Running a full ETL (extract, transform, load) pipeline and data warehouse is expensive and time-consuming to maintain. If you aren't ready to make this investment (and aren't storing terrabytes of data in your cloud apps ... ahem - that's most of us) PetalData is your secret sauce. Data scientists and data hobbyists can quickly explore the data in the cloud apps you already use without assembling several expensive parts.
+  Running a full ETL (extract, transform, load) pipeline and data warehouse is expensive and time-consuming to maintain. If you aren't ready to make this investment (and aren't storing terabytes of data in your cloud apps ... ahem - that's most of us) PetalData is your secret sauce. Data scientists and data hobbyists can quickly explore the data in the cloud apps you already use without assembling several expensive parts.
 </p>
 <hr />
 <h2 id="how_it_works">How PetalData Works</h2>
-<p>There are two components to PetalData: our Python library for downloading datasets and the PetalData server.
+<p class="lead">There are two components to PetalData: <a href="/api_libraries">our Python library</a> for downloading datasets and our web service.
 </p>
 <p>
-  While we provide a vanilla HTTP API, you'll primarly interact with PetalData with the petaldata Python package. This library standardizes the process of downloading, saving, and updating datasets. Datasets can be stored locally on your computer or in Amazon S3.
+  While we provide a vanilla HTTPS API, you'll primarily interact with PetalData with the petaldata Python package. This library standardizes the process of downloading, saving, and updating datasets across cloud apps. Datasets can be stored locally on your computer or in Amazon S3.
 </p>
 <p>
-  The most brittle parts of the download processes are conducted on our servers, accessible at petaldata.app. The Python library sends requests to the petaldata server. Server-side, we contact the appropriate cloud app, fetch your data, format it, and stream it back to the client. Data exporting is a brittle process that requires continual debugging, tweaks, and maintenance. If we didn't have our servers perform the hard work, debugging issues and frequent release cycles would be painful for everyone.
+  The most brittle parts of the download processes are conducted inside our web service, accessible at petaldata.app. The Python library sends requests to the petaldata web service. Server-side, we contact the appropriate cloud app, fetch your data, format it, and stream it back to the client. Data exporting is a brittle process that requires continual debugging, tweaks, and maintenance. If our web service didn't perform this hard work, debugging issues and frequent release cycles would be painful for everyone.
 </p>
 <hr />
 <h2 id="security">Security</h2>
@@ -97,4 +102,3 @@ df = contacts.df
 <hr />
 <h2 id="supported_apps">Supported Cloud Apps</h2>
 <p>You can find the cloud apps we currently support in the sidebar under "Datasets". We're adding more and we plan to open-source much of this logic to support as many cloud apps as possible. Watch our GitHub repo to be notified of new datasets. You can request additional datasets by opening an issue on the repo.</p>
-<hr />
