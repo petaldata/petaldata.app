@@ -56,7 +56,7 @@ order: 1
 import petaldata
 petaldata.datasets.stripe.api_key = "[YOUR STRIPE API KEY]"
 
-invoices = petaldata.datasets.stripe.Invoice()
+invoices = petaldata.datasets.stripe.Invoices()
 invoices.download(limit=5)
 # Access downloaded invoices via a Pandas Dataframe
 df = invoices.df
