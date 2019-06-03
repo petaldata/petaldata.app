@@ -14,7 +14,7 @@
               {{ p.title }}
             {% endif %}
           </a>
-          {% if p.url == page.url %}
+          {% if p.url == page.url and page.url != '/blog/' %}
             <div id="toc"></div>
           {% endif %}
         </li>

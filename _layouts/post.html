@@ -1,24 +1,48 @@
+---
+blog: true
+---
+
 <!DOCTYPE html>
 <html lang="en">
   {% include head.html %}
-  <link rel="stylesheet" href="/css/tufte.css"/>
-  <body>
+  <body class="post_body">
     {% include google_tag_manager.html %}
-    {% include nav.html %}
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col">
-          <article>
-            <section>
-              <h1>{{ page.title }}</h1>
-              <p class="subtitle">{{ page.date | date_to_string }} - {{ page.author }}</p>
+        <nav class="col-md-2 d-none d-md-block sidebar">
+          <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">
+            <img src="/images/petaldata_logo_with_text.png" alt="Petaldata">
+          </a>
+          <p class="small">
+            Export data science-ready datasets from cloud apps like Stripe, Hubspot, and Metabase.
+          </p>
+          <hr/>
+          <h6>Contents</h6>
+          <div id="toc"></div>
+        </nav>
+        <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-              {{ content | markdownify }}
-            </section>
-          </article>    
-        </div>
+          <h1>{{ page.title }}</h1>
+
+          <table class="author">
+            <tr>
+              <td>
+                <img src="/images/blog/derek_haynes.jpg"/>
+              </td>
+              <td>
+                <div class="subtitle">{{ page.author }}</div>
+                <div class="small">{{ page.date | date_to_string }}</div>
+              </td>
+            </tr>
+          </table>
+
+          {{ content | markdownify }}
+
+          {% include footer.html %}
+        </main>
       </div>
     </div>
-    {% include footer.html %}
+
+
   </body>
 </html>

@@ -244,12 +244,19 @@ $tab_border_color: #dee2e6;
 /*** datasets layout ****/
 
 main {
-  /*padding-top: $nav_height;*/
   margin-top: 15px;
+
+  ul {
+    max-width: 600px
+  }
 
   p {
     max-width: 600px;
     line-height: 180%;
+
+    img {
+      max-width: 100%;
+    }
   }
 
   hr {
@@ -512,13 +519,13 @@ figure {
 }
 
 /* https://github.com/tscanlin/tocbot#fixed-headers */
-h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+/*h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
     display: block;
     content: " ";
     height: $nav_height;
     margin-top: -$nav_height;
     visibility: hidden;
-}
+}*/
 
 /*** bootstrap callouts ***/
 
@@ -581,3 +588,126 @@ h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
 .bs-callout-info h4 {
     color: #5bc0de;
 }
+
+/*** tufte styling ***/
+
+body.post_body {
+  font-size: 15px;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+    color: #511d62;
+  }
+
+  h2 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+  }
+
+  .sidebar {
+    box-shadow: none;
+    padding-top: 65px;
+    border-right: none;
+
+    .small {
+      margin-top: 5px;
+      padding-left: 15px;
+      font-size: 12px;
+      color: darkgray;
+    }
+
+    h6 {
+      color: gray;
+      margin-bottom: 0;
+    }
+
+    .toc-list-mods {
+      padding-left: 15px;
+      li {
+        font-size: 12px;
+        color: darkgray;
+
+        .is-active-link {
+          font-weight: normal;
+          color: #333 !important;
+        }
+      }
+    }
+  }
+
+  main {
+    padding-top: 50px;
+    > p, > ul, > ol, h2 {
+      max-width: 55%;
+      li {
+        max-width: 100%
+      }
+    }
+    counter-reset: sidenote-counter;
+
+    > h1 {
+      font-size: 40px;
+      max-width: 55%;
+    }
+
+    .author {
+      margin: 10px 0 20px 0;
+      td:first-child {
+        img {
+          border-radius: 50%;
+          max-width: 40px;
+        }
+        padding-right: 10px
+      }
+      font-size: 14px;
+      .small {
+        color: darkgray;
+      }
+    }
+
+    > .subtitle {
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      margin-top: 50px;
+    }
+  }
+}
+
+.sidenote, .marginnote { float: right;
+                         clear: right;
+                         margin-right: -60%;
+                         width: 50%;
+                         margin-top: 0;
+                         margin-bottom: 0;
+                         line-height: 1.3;
+                         vertical-align: baseline;
+                         position: relative; 
+                         color: darkgray;
+                         font-size: 12px;
+
+                       }
+
+.sidenote-number { counter-increment: sidenote-counter; }
+
+.sidenote-number:after, .sidenote:before { 
+                                           position: relative;
+                                           vertical-align: baseline; }
+
+.sidenote-number:after { content: counter(sidenote-counter);
+                         font-size: 11px;
+                         top: -0.5rem;
+                          }
+
+.sidenote:before { content: counter(sidenote-counter) " ";
+                   font-size: 11px;
+                   top: -0.5rem; }
+
+blockquote .sidenote, blockquote .marginnote { margin-right: -82%;
+                                               min-width: 59%;
+                                               text-align: left; }
+
+label.sidenote-number { display: inline; margin-left: -4px; }
+input.margin-toggle { display: none; }
