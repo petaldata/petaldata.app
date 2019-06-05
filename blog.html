@@ -2,13 +2,28 @@
 layout: dataset_show
 title: PetalData Blog
 toc_title: Blog
+logo_file: petaldata_logo.png
 order: 5
 ---
-<h1>{{ page.title }}</h1>
+{% include jumbotron.html %}
 
 {% for post in site.posts %}
   <div class="article">
-    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+    <a href="{{ post.url }}">
+    <table class="author">
+          <tr>
+            <td>
+              <img src="/images/blog/derek_haynes.jpg" />
+            </td>
+            <td>
+              <div class="subtitle">{{ post.author }}</div>
+              <div class="small">{{ post.date | date_to_string }}</div>
+            </td>
+          </tr>
+        </table>
+
     <p>{{ post.excerpt }}</p>
+    <h3>{{ post.title }}</h3>
+  </a>
   </div>
 {% endfor %}

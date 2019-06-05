@@ -572,6 +572,38 @@ figure {
 
 /*** tufte styling ***/
 
+.article {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 50px 0;
+
+  a {
+      padding: 20px;
+      display: block;
+  }
+
+  &:hover {
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .author {
+    color: initial;
+  }
+
+  h3 {
+    margin-top: 20px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+    text-transform: none;
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+}
+
 body.post_body {
   font-size: 15px;
 
@@ -632,7 +664,17 @@ body.post_body {
       max-width: 55%;
     }
 
-    .author {
+    > .subtitle {
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      margin-top: 50px;
+    }
+  }
+}
+
+.author {
       margin: 10px 0 20px 0;
       td:first-child {
         img {
@@ -645,17 +687,8 @@ body.post_body {
       .small {
         color: darkgray;
       }
-    }
-
-    > .subtitle {
-      margin-bottom: 30px;
-    }
-
-    h2 {
-      margin-top: 50px;
-    }
-  }
 }
+
 
 .sidenote, .marginnote { float: right;
                          clear: right;
