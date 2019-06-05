@@ -4,7 +4,7 @@ title:  "Analyzing Stripe data with Python+Pandas Dataframes"
 author: "Derek Haynes"
 ---
 
-<img src="/images/blog/stripe_pandas.png"/>
+<img src="/images/blog/stripe_pandas/stripe_pandas.png"/>
 
 As the authoritative source on how your business is performing, your Stripe account contains a wealth of data just waiting for analysis. In this post, I'll show how to generate common subscription revenue metrics like MRR, churn, and subscription revenue by plan with [Pandas](http://pandas.pydata.org/), _the_ Python Data Analysis Library.
 
