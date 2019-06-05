@@ -1,48 +1,44 @@
 ---
 blog: true
 ---
-
 <!DOCTYPE html>
 <html lang="en">
-  {% include head.html %}
-  <body class="post_body">
-    {% include google_tag_manager.html %}
-    <div class="container-fluid">
-      <div class="row">
-        <nav class="col-md-2 d-none d-md-block sidebar">
-          <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">
-            <img src="/images/petaldata_logo_with_text.png" alt="Petaldata">
-          </a>
-          <p class="small">
-            Export data science-ready datasets from cloud apps like Stripe, Hubspot, and Metabase.
-          </p>
-          <hr/>
-          <h6>Contents</h6>
-          <div id="toc"></div>
-        </nav>
-        <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+{% include head.html %}
 
-          <h1>{{ page.title }}</h1>
+<body class="post_body">
+  {% include google_tag_manager.html %}
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block sidebar">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">
+          <img src="/images/petaldata_logo_with_text.png" alt="Petaldata">
+        </a>
+        <p class="small">
+          Export data science-ready datasets from cloud apps like Stripe, Hubspot, and Metabase.
+        </p>
+        <hr />
+        <h6>Contents</h6>
+        <div id="toc"></div>
+      </nav>
+      <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <h1>{{ page.title }}</h1>
+        <table class="author">
+          <tr>
+            <td>
+              <img src="/images/blog/derek_haynes.jpg" />
+            </td>
+            <td>
+              <div class="subtitle">{{ page.author }}</div>
+              <div class="small">{{ page.date | date_to_string }}</div>
+            </td>
+          </tr>
+        </table>
+        {{ content | markdownify }}
+        {% include mailchimp.html %}
+        {% include footer.html %}
+      </main>
+    </div> <!-- row -->
+  </div> <!-- container -->
+</body>
 
-          <table class="author">
-            <tr>
-              <td>
-                <img src="/images/blog/derek_haynes.jpg"/>
-              </td>
-              <td>
-                <div class="subtitle">{{ page.author }}</div>
-                <div class="small">{{ page.date | date_to_string }}</div>
-              </td>
-            </tr>
-          </table>
-
-          {{ content | markdownify }}
-
-          {% include footer.html %}
-        </main>
-      </div>
-    </div>
-
-
-  </body>
 </html>
