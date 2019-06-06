@@ -18,11 +18,11 @@ You could manually export Hubspot contacts via their API to an SQL database, the
 
 If you are new to Python, I suggest [installing Jupyter Notebooks via Anaconda](https://www.anaconda.com/distribution/). This will install Pandas as well. Jupyter Notebooks gives you an interactive way to explore your data and share your analysis.
 
-## Export Contacts
+## Export Hubspot Contacts
 
 First, we need to export our Hubspot contacts into a [Pandas Dataframe](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html). A Dataframe is like an Excel sheet in code. We can do this with just a couple of lines using the [PetalData](https://petaldata.app) Python package (`pip install petaldata`).
 
-Create a new Jupter notebook. Copy and paste the following into the first cell:
+Create a new Jupyter notebook. Copy and paste the following into the first cell:
 
 <script src="https://gist.github.com/itsderek23/c04ae53e5a8561e578121ceaeae4bf13.js"></script>
 

@@ -16,7 +16,7 @@ Stripe offers its own tool for querying data with SQL, [Stripe Sigma](https://st
 
 If you are new to Python, I suggest [installing Jupyter Notebooks via Anaconda](https://www.anaconda.com/distribution/). This will install Pandas as well. Jupyter Notebooks gives you an interactive way to explore your data and share your analysis.
 
-## Export Invoices
+## Export Stripe Invoices
 
 First, we need to export our invoices from Stripe into a [Pandas Dataframe](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html). A Dataframe is like an Excel sheet in code. We can do this with just a couple of lines using the [PetalData](https://petaldata.app) Python package (`pip install petaldata`).
 
