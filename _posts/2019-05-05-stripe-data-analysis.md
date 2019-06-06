@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Analyzing Stripe data with Python+Pandas Dataframes"
+title:  "Analyzing Stripe data with Python and Pandas"
 author: "Derek Haynes"
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Analyzing Hubspot data with Python+Pandas Dataframes"
+title:  "Analyzing Hubspot data with Python and Pandas"
 author: "Derek Haynes"
 ---
 
